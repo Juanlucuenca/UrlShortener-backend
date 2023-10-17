@@ -30,7 +30,9 @@ namespace UrlShorter.Repository
             {
                 Id = urlDto.Id,
                 OriginalUrl = urlDto.OriginalUrl,
-                ShortenedUrl = shortUrl
+                ShortenedUrl = shortUrl,
+                Visits = 0
+          
             };
 
             _context.Urls.Add(urlModel);

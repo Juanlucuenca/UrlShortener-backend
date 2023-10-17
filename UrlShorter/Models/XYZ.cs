@@ -10,7 +10,7 @@ namespace UrlShorter.Models
 		public string OriginalUrl { get; set; } = string.Empty;
 		public string ShortenedUrl { get; set; } = string.Empty;
 		public int Visits { get; set; }
-		public Category Cateogiry { get; set; }
+		public Category Category { get; set; }
 		public int CategoryId { get; set; }
 	}
 }
