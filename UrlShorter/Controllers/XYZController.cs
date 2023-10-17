@@ -29,7 +29,8 @@ namespace UrlShorter.Controllers
 
             if (!ModelState.IsValid)
                 return BadRequest();
-
+            
+            _XYZRepository.IncreaseVisits(id);
             return Ok(_XYZRepository.GetOriginalUrl(id));
         }
 

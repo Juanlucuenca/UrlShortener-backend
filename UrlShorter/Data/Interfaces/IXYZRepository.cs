@@ -9,6 +9,7 @@ namespace UrlShorter.Data.Interfaces
 		bool ExistUrl(int Id);
         bool CreateUrl(XYZForCreationDto urlModel, string shortUrl);
 		XYZ SearchUrlByShortUrl(string shortUrl);
+		int IncreaseVisits(int id);
     }
 }
 

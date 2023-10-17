@@ -38,6 +38,14 @@ namespace UrlShorter.Repository
             return true;
         }
 
+        public int IncreaseVisits(int id)
+        {
+            XYZ urlModel = _context.Urls.Where(u => u.Id == id).FirstOrDefault();
+            urlModel.Visits++;
+            _context.SaveChanges();
+            return urlModel.Visits;
+        }
+
         public XYZ SearchUrlByShortUrl(string shortUrl)
         {
             return _context.Urls.Where(u => u.ShortenedUrl == shortUrl).FirstOrDefault();
