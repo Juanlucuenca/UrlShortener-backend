@@ -30,7 +30,7 @@ namespace UrlShorter.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
             
-            _XYZRepository.IncreaseVisits(id);
+            
             return Ok(_XYZRepository.GetOriginalUrl(id));
         }
 
@@ -50,7 +50,10 @@ namespace UrlShorter.Controllers
             // Buscar la URL original correspondiente a la URL corta en la base de datos
             XYZ modelUrl = _XYZRepository.SearchUrlByShortUrl(shortUrl);
             if (modelUrl != null)
+            {
+                _XYZRepository.IncreaseVisits(modelUrl.Id);
                 return Redirect(modelUrl.OriginalUrl);
+            }
             return NotFound();
         }
 

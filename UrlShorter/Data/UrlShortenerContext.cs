@@ -17,7 +17,13 @@ public class UrlShortenerContext : DbContext
             .HasOne(c => c.Category)
             .WithMany(u => u.Urls)
             .HasForeignKey(u => u.CategoryId);
-                
+               
+        modelBuilder.Entity<Category>().HasData(
+            new Category() { Id = 1, Name = "Heores", Description = "Super heores muy copados"},
+            new Category() { Id = 2, Name = "Accion", Description = "Super Accion muy copados" },
+            new Category() { Id = 3, Name = "Gatos", Description = "Super Gatos muy copados" }
+        );
+
         base.OnModelCreating(modelBuilder);
     }
 }

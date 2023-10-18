@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using UrlShorter.Data.Interfaces;
 using UrlShorter.Models;
 
@@ -26,13 +27,16 @@ namespace UrlShorter.Repository
         public bool CreateUrl(XYZForCreationDto urlDto, string shortUrl)
         {
 
+            bool existURL = _context.Urls.Any(u => u.OriginalUrl == urlDto.OriginalUrl);
+            if (existURL)
+                return false;
+
             XYZ urlModel = new XYZ()
             {
-                Id = urlDto.Id,
                 OriginalUrl = urlDto.OriginalUrl,
                 ShortenedUrl = shortUrl,
+                CategoryId = urlDto.CategoryId,
                 Visits = 0
-          
             };
 
             _context.Urls.Add(urlModel);
